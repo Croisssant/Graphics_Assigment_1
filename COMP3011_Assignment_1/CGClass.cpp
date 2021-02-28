@@ -65,12 +65,15 @@ int main(void)
         glScalef(0.1f, 0.1f, 0.1f);
         glRotatef(-45.0f, 1.0f, 0.0f, 0.0f);
         glRotatef(-90.0f, 0.0f, 0.0f, 1.0f);
+        glTranslatef(-7.0f, 0.0f, 0.0f);
+
         //Rotate around 3 axes through variables
         glRotatef(o, 1.0f, 0.0f, 0.0f);
         glRotatef(p, 0.0f, 1.0f, 0.0f);
         glRotatef(q, 0.0f, 0.0f, 1.0f);
 
-        glTranslatef(-7.0f, 0.0f, 2.0f);
+
+       
         //Move forward
         glTranslatef(b, b, b);
 
