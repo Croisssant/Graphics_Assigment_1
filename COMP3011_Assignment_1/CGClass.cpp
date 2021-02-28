@@ -127,19 +127,19 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     }
     if (key == GLFW_KEY_U && action == GLFW_PRESS)
     {
-        q += 5.0f;
+        o += 5.0f;
     }
     if (key == GLFW_KEY_O && action == GLFW_PRESS)
     {
-        q -= 5.0f;
+        o -= 5.0f;
     }
     if (key == GLFW_KEY_I && action == GLFW_PRESS)
     {
-        o -= 5.0f;
+        q -= 5.0f;
     }
     if (key == GLFW_KEY_K && action == GLFW_PRESS)
     {
-        o += 5.0f;
+        q += 5.0f;
     }
     if (key == GLFW_KEY_J && action == GLFW_PRESS)
     {
