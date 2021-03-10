@@ -1,2 +1,0 @@
-C:\Computer Science\Year 3\Graphics\COMP3011_Assignment_1\Debug\COMP3011_Assignment_1.exe
-C:\Computer Science\Year 3\Graphics\COMP3011_Assignment_1\Debug\COMP3011_Assignment_1.pdb
