@@ -19,6 +19,7 @@ GLfloat vertex[][3] = {
 //Declare keyboard method
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 void divide_triangle(GLfloat* a, GLfloat* b, GLfloat* c, int depth, int face_number);
+void divide_triangle2(GLfloat* a, GLfloat* b, GLfloat* c, int depth, int face_number);
 void normalize(GLfloat* v);
 void triangle(GLfloat* va, GLfloat* vb, GLfloat* vc);
 void draw();
@@ -118,9 +119,9 @@ void divide_triangle(GLfloat* a, GLfloat* b, GLfloat* c, int depth, int face_num
         normalize(ac);
 
 
-        divide_triangle(a, ac, ab, depth - 1, 1);
+        divide_triangle(ac, ab, a, depth - 1, 1);
 
-        divide_triangle(b, ab, bc, depth - 1, 2);
+        divide_triangle(bc, b, ab, depth - 1, 2);
 
         divide_triangle(c, bc, ac, depth - 1, 3);
 
@@ -151,6 +152,57 @@ void divide_triangle(GLfloat* a, GLfloat* b, GLfloat* c, int depth, int face_num
 
     }
 }
+
+void divide_triangle2(GLfloat* a, GLfloat* b, GLfloat* c, int depth, int face_number)
+{
+    if (depth > 0) {
+        //Temporary points are used to store midpoints
+        GLfloat ab[3], bc[3], ac[3];
+
+        for (unsigned int i = 0; i < 3; i++)
+            ab[i] = (a[i] + b[i]) / 2;
+        normalize(ab);
+        for (unsigned int i = 0; i < 3; i++)
+            bc[i] = (b[i] + c[i]) / 2;
+        normalize(bc);
+        for (unsigned int i = 0; i < 3; i++)
+            ac[i] = (a[i] + c[i]) / 2;
+        normalize(ac);
+
+
+        divide_triangle2(ac, ab, a, depth - 1, 1);
+
+        divide_triangle2(bc, b, ab, depth - 1, 2);
+
+        divide_triangle2(c, bc, ac, depth - 1, 3);
+
+        divide_triangle2(ab, ac, bc, depth - 1, 4);
+    }
+    else {
+
+        if (face_number == 1)
+        {
+            glColor3f(0.9, 0.0, 0.9);
+            triangle(a, b, c);
+        }
+        else if (face_number == 2)
+        {
+            glColor3f(0.2, 0.5, 1.0);
+            triangle(a, b, c);
+        }
+        else if (face_number == 3)
+        {
+            glColor3f(0.5, 0.5, 0.5);
+            triangle(a, b, c);
+        }
+        else {
+
+            glColor3f(0.7, 0.1, 0.0);
+            triangle(a, b, c);
+        }
+
+    }
+}
 void triangle(GLfloat* va, GLfloat* vb, GLfloat* vc)
 {
     glBegin(GL_TRIANGLES);
@@ -162,11 +214,11 @@ void triangle(GLfloat* va, GLfloat* vb, GLfloat* vc)
 }
 void draw() {
     divide_triangle(vertex[0], vertex[2], vertex[1], DEPTH, 1);
-    divide_triangle(vertex[0], vertex[3], vertex[2], DEPTH, 2);
+    divide_triangle2(vertex[0], vertex[3], vertex[2], DEPTH, 2);
     divide_triangle(vertex[0], vertex[4], vertex[3], DEPTH, 3);
-    divide_triangle(vertex[0], vertex[1], vertex[4], DEPTH, 4);
-    divide_triangle(vertex[5], vertex[1], vertex[2], DEPTH, 4);
-    divide_triangle(vertex[5], vertex[2], vertex[3], DEPTH, 3);
-    divide_triangle(vertex[5], vertex[3], vertex[4], DEPTH, 2);
-    divide_triangle(vertex[5], vertex[4], vertex[1], DEPTH, 1);
+    divide_triangle2(vertex[0], vertex[1], vertex[4], DEPTH, 4);
+    divide_triangle(vertex[5], vertex[1], vertex[2], DEPTH, 5);
+    divide_triangle2(vertex[5], vertex[2], vertex[3], DEPTH, 6);
+    divide_triangle(vertex[5], vertex[3], vertex[4], DEPTH, 7);
+    divide_triangle2(vertex[5], vertex[4], vertex[1], DEPTH, 8);
 }

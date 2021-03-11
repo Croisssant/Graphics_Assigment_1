@@ -1,2 +1,5 @@
 ﻿  main.cpp
+C:\Users\limka\OneDrive\Desktop\Graphics_Assigment_1\Question2\COMP3011_Assignment_1\main.cpp(185,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\limka\OneDrive\Desktop\Graphics_Assigment_1\Question2\COMP3011_Assignment_1\main.cpp(190,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\limka\OneDrive\Desktop\Graphics_Assigment_1\Question2\COMP3011_Assignment_1\main.cpp(200,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   COMP3011_Assignment_1.vcxproj -> C:\Users\limka\OneDrive\Desktop\Graphics_Assigment_1\Question2\COMP3011_Assignment_1\Debug\COMP3011_Assignment_1.exe
